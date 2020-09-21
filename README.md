@@ -12,8 +12,6 @@
 docker run --rm -p 2222:22 ntuangiang/ubuntu-ssh
 ```
 
-```
-
 ## LICENSE
 
 MIT License
