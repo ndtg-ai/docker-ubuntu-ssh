@@ -4,7 +4,7 @@ MAINTAINER Nguyen Tuan Giang "https://github.com/ntuangiang"
 
 ENV NOTVISIBLE "in users profile"
 
-RUN apk add --no-cache openssh
+RUN apk add --no-cache openssh openssh-client
 
 RUN mkdir /var/run/sshd
 
