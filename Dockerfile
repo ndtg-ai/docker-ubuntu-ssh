@@ -1,10 +1,10 @@
-FROM ubuntu:latest
+FROM alpine:latest
 
 MAINTAINER Nguyen Tuan Giang "https://github.com/ntuangiang"
 
-RUN apt-get update \
-    && apt-get upgrade -y \
-    && apt-get install -y openssh-server
+ENV NOTVISIBLE "in users profile"
+
+RUN apk add --no-cache openssh
 
 RUN mkdir /var/run/sshd
 
@@ -15,12 +15,10 @@ RUN sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config
 
 RUN mkdir /root/.ssh
 
-ENV NOTVISIBLE "in users profile"
 RUN echo "export VISIBLE=now" >> /etc/profile
 
-RUN apt-get clean && \
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+COPY rootfs /
 
 EXPOSE 22
 
-CMD ["/usr/sbin/sshd", "-D"]
+ENTRYPOINT ["/entrypoint.sh"]
