@@ -2,6 +2,9 @@ FROM alpine:latest
 
 MAINTAINER Nguyen Tuan Giang "https://github.com/ntuangiang"
 
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US.UTF-8
+
 ENV NOTVISIBLE "in users profile"
 
 RUN apk add --no-cache rsync coreutils openssh openssh-client
